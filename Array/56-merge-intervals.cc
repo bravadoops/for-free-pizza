@@ -1,3 +1,5 @@
+// O(nlgn)
+// O(1)
 class Solution {
 public:
     vector<Interval> merge(vector<Interval>& intervals) {
