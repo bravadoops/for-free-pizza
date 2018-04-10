@@ -9,29 +9,32 @@ public:
         if (n == 1) {
             return 1;
         }
+        // priority_queue with set
         priority_queue<double, vector<double>, greater<double>> q;
         unordered_set<double> s;
         vector<double> res;
         
-        q.push(2); q.push(3); q.push(5);
-        s.insert(2); s.insert(3); s.insert(5);
+        int t1 = 2, t2 = 3, t3 = 5;
+
+        q.push(t1); q.push(t2); q.push(t3);
+        s.insert(t1); s.insert(t2); s.insert(t3);
         
         while (res.size() < n+6) {
             double top = q.top(); q.pop();
             // save in result
             res.push_back(top);
             
-            if (s.find(top * 2) == s.end()) {
-                q.push(top * 2);
-                s.insert(top * 2);
+            if (s.find(top * t1) == s.end()) {
+                q.push(top * t1);
+                s.insert(top * t1);
             }
-            if (s.find(top * 3) == s.end()) {
-                q.push(top * 3);
-                s.insert(top * 3);
+            if (s.find(top * t2) == s.end()) {
+                q.push(top * t2);
+                s.insert(top * t2);
             }
-            if (s.find(top *5) == s.end()) {
-                q.push(top * 5);
-                s.insert (top * 5);
+            if (s.find(top * t3) == s.end()) {
+                q.push(top * t3);
+                s.insert (top * t3);
             }
         }
         return res[n-2];

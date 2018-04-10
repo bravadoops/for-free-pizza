@@ -26,7 +26,37 @@ public:
         if (contain) {
             return false;
         }
-        // crucial point: remove element in vector by swaping it to back
+        // crucial point: remove element in vector by swaping it to back        // write your code here
+        if (n == 1) {
+            return 1;
+        }
+        priority_queue<double, vector<double>, greater<double>> q;
+        unordered_set<double> s;
+        vector<double> res;
+        
+        q.push(2); q.push(3); q.push(5);
+        s.insert(2); s.insert(3); s.insert(5);
+        
+        while (res.size() < n+6) {
+            double top = q.top(); q.pop();
+            // save in result
+            res.push_back(top);
+            
+            if (s.find(top * 2) == s.end()) {
+                q.push(top * 2);
+                s.insert(top * 2);
+            }
+            if (s.find(top * 3) == s.end()) {
+                q.push(top * 3);
+                s.insert(top * 3);
+            }
+            if (s.find(top *5) == s.end()) {
+                q.push(top * 5);
+                s.insert (top * 5);
+            }
+        }
+        return res[n-2];
+    }
         // vector
         int back = a.back();
         int index = m[val];
